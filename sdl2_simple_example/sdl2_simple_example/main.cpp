@@ -183,6 +183,15 @@ void renderTexture() {
 
 }
 
+GLuint AxisLines[] = {
+	//Eje X
+	-1000.0, 0.0f, 0.0f, 1000.0f, 0.0f, 0.0f,
+	//Eje Y
+	0.0f, -1000.0, 0.0f, 0.0f, 1000.0, 0.0f,
+	//Eje Z
+	0.0f, 0.0f, -1000.0, 0.0f, 0.0f, 1000.0f
+};
+
 static void display_func() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -198,6 +207,21 @@ static void display_func() {
 	angle += 0.1f;
 
 	glRotatef(angle, 0.0f, 1.0f, 0.0f);
+
+	glBegin(GL_LINES);
+
+	glColor3f(1.0, 1.0, 0.0);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(2.0, 0.0, 0.0);
+
+	glColor3f(1.0, 1.0, 0.0);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(0.0, 2.0, 0.0);
+
+	glColor3f(1.0, 1.0, 0.0);
+	glVertex3f(0.0, 0.0, 0.0);
+	glVertex3f(0.0, 0.0, 2.0);
+	glEnd();
 
 	//renderTexture();
 
