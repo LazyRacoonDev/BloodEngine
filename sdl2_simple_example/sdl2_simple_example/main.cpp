@@ -206,7 +206,7 @@ static void display_func() {
 	static float angle = 0.0f;
 	angle += 0.1f;
 
-	glRotatef(angle, 0.0f, 1.0f, 0.0f);
+	//glRotatef(angle, 0.0f, 1.0f, 0.0f);
 
 	glBegin(GL_LINES);
 
