@@ -41,17 +41,17 @@ wchar_t* convertToWideString(const char* str) {
 
 GLfloat vertices[] = {
 	//delante
-	0.0f,  0.0f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f, -1.0f,  0.0f,   0.0f, -1.0f,  0.0f,  
+	0.0f,  0.0f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f, -1.0f,  0.0f,   0.0f, -1.0f,  0.0f,
 	//derecha
-	0.0f,  0.0f,  0.0f,   0.0f, -1.0f,  0.0f,   0.0f, -1.0f, -1.0f,   0.0f,  0.0f, -1.0f,  
+	0.0f,  0.0f,  0.0f,   0.0f, -1.0f,  0.0f,   0.0f, -1.0f, -1.0f,   0.0f,  0.0f, -1.0f,
 	//arriba
-	0.0f,  0.0f,  0.0f,   0.0f,  0.0f, -1.0f,   1.0f,  0.0f, -1.0f,   1.0f,  0.0f,  0.0f, 
+	0.0f,  0.0f,  0.0f,   0.0f,  0.0f, -1.0f,   1.0f,  0.0f, -1.0f,   1.0f,  0.0f,  0.0f,
 	//abajo
-	1.0f, -1.0f,  0.0f,   1.0f, -1.0f, -1.0f,   0.0f, -1.0f, -1.0f,   0.0f, -1.0f,  0.0f,  
+	1.0f, -1.0f,  0.0f,   1.0f, -1.0f, -1.0f,   0.0f, -1.0f, -1.0f,   0.0f, -1.0f,  0.0f,
 	//atras
-	1.0f,  0.0f, -1.0f,   0.0f,  0.0f, -1.0f,   0.0f, -1.0f, -1.0f,   1.0f, -1.0f, -1.0f,  
+	1.0f,  0.0f, -1.0f,   0.0f,  0.0f, -1.0f,   0.0f, -1.0f, -1.0f,   1.0f, -1.0f, -1.0f,
 	//izquierda
-	1.0f,  0.0f,  0.0f,   1.0f,  0.0f, -1.0f,   1.0f, -1.0f, -1.0f,   1.0f, -1.0f,  0.0f  
+	1.0f,  0.0f,  0.0f,   1.0f,  0.0f, -1.0f,   1.0f, -1.0f, -1.0f,   1.0f, -1.0f,  0.0f
 };
 
 GLuint indices[] = {
@@ -71,40 +71,40 @@ GLuint indices[] = {
 
 GLfloat colors[] = {
 	//delante rojo
-	1.0f, 0.0f, 0.0f, 1.0f,  
-	1.0f, 0.0f, 0.0f, 1.0f, 
-	1.0f, 0.0f, 0.0f, 1.0f,  
-	1.0f, 0.0f, 0.0f, 1.0f,  
+	1.0f, 0.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f, 1.0f,
 
 	//derecha verde
-	0.0f, 1.0f, 0.0f, 1.0f,  
-	0.0f, 1.0f, 0.0f, 1.0f,  
-	0.0f, 1.0f, 0.0f, 1.0f, 
-	0.0f, 1.0f, 0.0f, 1.0f,  
+	0.0f, 1.0f, 0.0f, 1.0f,
+	0.0f, 1.0f, 0.0f, 1.0f,
+	0.0f, 1.0f, 0.0f, 1.0f,
+	0.0f, 1.0f, 0.0f, 1.0f,
 
 	//arrriba azul
-	0.0f, 0.0f, 1.0f, 1.0f,  
-	0.0f, 0.0f, 1.0f, 1.0f,  
-	0.0f, 0.0f, 1.0f, 1.0f, 
-	0.0f, 0.0f, 1.0f, 1.0f,  
+	0.0f, 0.0f, 1.0f, 1.0f,
+	0.0f, 0.0f, 1.0f, 1.0f,
+	0.0f, 0.0f, 1.0f, 1.0f,
+	0.0f, 0.0f, 1.0f, 1.0f,
 
 	//abajo amarillo
-	1.0f, 1.0f, 0.0f, 1.0f,  
-	1.0f, 1.0f, 0.0f, 1.0f, 
-	1.0f, 1.0f, 0.0f, 1.0f, 
-	1.0f, 1.0f, 0.0f, 1.0f,  
+	1.0f, 1.0f, 0.0f, 1.0f,
+	1.0f, 1.0f, 0.0f, 1.0f,
+	1.0f, 1.0f, 0.0f, 1.0f,
+	1.0f, 1.0f, 0.0f, 1.0f,
 
 	//atras cian
-	0.0f, 1.0f, 1.0f, 1.0f,  
-	0.0f, 1.0f, 1.0f, 1.0f,  
-	0.0f, 1.0f, 1.0f, 1.0f,  
-	0.0f, 1.0f, 1.0f, 1.0f,  
+	0.0f, 1.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f, 1.0f,
 
 	//izquierda magenta
-	1.0f, 0.0f, 1.0f, 1.0f,  
-	1.0f, 0.0f, 1.0f, 1.0f,  
-	1.0f, 0.0f, 1.0f, 1.0f,  
-	1.0f, 0.0f, 1.0f, 1.0f   
+	1.0f, 0.0f, 1.0f, 1.0f,
+	1.0f, 0.0f, 1.0f, 1.0f,
+	1.0f, 0.0f, 1.0f, 1.0f,
+	1.0f, 0.0f, 1.0f, 1.0f
 };
 
 GLfloat texCoords[] = {
@@ -163,9 +163,9 @@ GLuint ImageTexture() {
 	return textureID; // Return the texture ID
 }
 
-void renderTexture(){
+void renderTexture() {
 
-	
+
 	GLubyte checkerImage[64][64][4];
 	for (int i = 0; i < 64; i++) {
 		for (int j = 0; j < 64; j++) {
@@ -176,7 +176,7 @@ void renderTexture(){
 			checkerImage[i][j][3] = (GLubyte)255;
 		}
 	}
-	
+
 	GLuint textureID;
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glGenTextures(1, &textureID);
@@ -275,9 +275,9 @@ static void display_func() {
 
 			glEnd();
 		*/
-	 //Esto es cubo de forma directa
+		//Esto es cubo de forma directa
 
-	//Activa las cosas
+	   //Activa las cosas
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -324,11 +324,11 @@ int main(int argc, char** argv) {
 
 	while (processEvents()) {
 		const auto t0 = hrclock::now();
-		display_func(); 
+		display_func();
 		window.swapBuffers();
 		const auto t1 = hrclock::now();
 		const auto dt = t1 - t0;
-		if(dt<FRAME_DT) this_thread::sleep_for(FRAME_DT - dt);
+		if (dt < FRAME_DT) this_thread::sleep_for(FRAME_DT - dt);
 	}
 
 	return 0;
