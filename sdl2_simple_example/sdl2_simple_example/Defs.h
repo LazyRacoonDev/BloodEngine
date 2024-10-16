@@ -6,6 +6,7 @@
 #include <chrono>
 #include <thread>
 #include <exception>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_opengl.h>
 #include "imgui_impl_sdl2.h"
@@ -14,8 +15,6 @@
 #include "Windows.h"
 #include <iostream>
 
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
 #include <stb_image.h>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
