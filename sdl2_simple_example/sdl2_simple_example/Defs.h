@@ -12,7 +12,9 @@
 #include "MyWindow.h"
 #include "IL/il.h"
 #include "Windows.h"
+#include <iostream>
 
+#include <gladLoadGL(glfwGetProcAddress);>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
