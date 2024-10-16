@@ -1,13 +1,4 @@
-#include <GL/glew.h>
-#include <chrono>
-#include <thread>
-#include <exception>
-#include <glm/glm.hpp>
-#include <SDL2/SDL_events.h>
-#include "imgui_impl_sdl2.h"
-#include "MyWindow.h"
-#include "IL/il.h"
-#include "Windows.h"
+#include "Defs.h"
 using namespace std;
 
 using hrclock = chrono::high_resolution_clock;

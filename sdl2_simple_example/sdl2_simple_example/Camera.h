@@ -4,7 +4,5 @@
 
 #include "Defs.h"
 
-struct Plane {
-	glm::vec3 normal;
-};
+
 #endif // !__CAMERA_H__
