@@ -14,7 +14,9 @@
 #include "Windows.h"
 #include <iostream>
 
-#include <gladLoadGL(glfwGetProcAddress);>
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <stb_image.h>
 #include <glm/glm.hpp>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
@@ -24,7 +26,5 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
 #include "glm/gtc/type_ptr.hpp"
-
-
 
 #endif // !__DEFS_H__
