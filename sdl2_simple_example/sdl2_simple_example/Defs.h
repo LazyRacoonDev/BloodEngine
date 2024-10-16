@@ -9,7 +9,6 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_opengl.h>
 #include "imgui_impl_sdl2.h"
-#include "MyWindow.h"
 #include "IL/il.h"
 #include "Windows.h"
 #include <iostream>
@@ -30,5 +29,12 @@
 #include <assimp/vector3.h>
 #include <assimp/matrix3x3.h>
 #include <assimp/matrix4x4.h>
+
+#include "MyWindow.h"
+#include "Camera.h"
+#include "VAO.h"
+#include "VBO.h"
+#include "EBO.h"
+
 
 #endif // !__DEFS_H__
