@@ -24,5 +24,11 @@
 #include <glm/gtc/quaternion.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
 #include "glm/gtc/type_ptr.hpp"
+#include <math.h>
+#include <stdio.h>
+#include <cfloat>
+#include <assimp/vector3.h>
+#include <assimp/matrix3x3.h>
+#include <assimp/matrix4x4.h>
 
 #endif // !__DEFS_H__
