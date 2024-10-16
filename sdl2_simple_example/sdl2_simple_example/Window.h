@@ -20,5 +20,4 @@ public:
 	~MyWindow();
 
 	void swapBuffers() const;
-
 };
