@@ -32,9 +32,6 @@
 
 #include "MyWindow.h"
 #include "Camera.h"
-#include "VAO.h"
-#include "VBO.h"
-#include "EBO.h"
 
 
 #endif // !__DEFS_H__
