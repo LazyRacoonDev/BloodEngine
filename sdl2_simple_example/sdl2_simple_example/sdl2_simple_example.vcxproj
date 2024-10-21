@@ -136,10 +136,6 @@
     <ClInclude Include="Defs.h" />
     <ClInclude Include="MyWindow.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="default.frag" />
-    <None Include="default.vert" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
