@@ -11,6 +11,6 @@
 #include "MyWindow.h"
 #include "IL/il.h"
 #include "Windows.h"
-
+#include "SDL2/SDL.h"
 
 #endif // !__DEFS_H__
