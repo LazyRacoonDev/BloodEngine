@@ -1,6 +1,5 @@
 #include "Defs.h"
 
-#include "Camera.h"
 using namespace std;
 
 using hrclock = chrono::high_resolution_clock;

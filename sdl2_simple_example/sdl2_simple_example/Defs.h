@@ -12,6 +12,11 @@
 #include "IL/il.h"
 #include "Windows.h"
 #include <iostream>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_video.h>
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
 
 #include <stb_image.h>
 #include <glm/glm.hpp>
@@ -30,7 +35,8 @@
 #include <assimp/matrix3x3.h>
 #include <assimp/matrix4x4.h>
 
-#include "Camera.h"
 #include "MyWindow.h"
+#include "Camera.h"
+
 
 #endif // !__DEFS_H__
