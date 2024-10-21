@@ -30,8 +30,7 @@
 #include <assimp/matrix3x3.h>
 #include <assimp/matrix4x4.h>
 
-#include "MyWindow.h"
 #include "Camera.h"
-
+#include "MyWindow.h"
 
 #endif // !__DEFS_H__
