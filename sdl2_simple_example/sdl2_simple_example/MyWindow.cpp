@@ -1,4 +1,11 @@
-#include "Defs.h"
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_video.h>
+#include <SDL2/SDL_opengl.h>
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
+
+#include "MyWindow.h"
 using namespace std;
 
 MyWindow::MyWindow(const std::string& title, int w, int h) : _width(w), _height(h) {
@@ -49,3 +56,4 @@ void MyWindow::swapBuffers() const {
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     SDL_GL_SwapWindow(static_cast<SDL_Window*>(_window));
 }
+
