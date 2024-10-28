@@ -56,3 +56,4 @@ void MyWindow::swapBuffers() const {
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     SDL_GL_SwapWindow(static_cast<SDL_Window*>(_window));
 }
+
