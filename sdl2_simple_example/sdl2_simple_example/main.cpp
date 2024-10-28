@@ -29,19 +29,21 @@ wchar_t* convertToWideString(const char* str) {
 	return wideStr;
 }
 
+
+
 GLfloat vertices[] = {
 	//delante
-	0.0f,  0.0f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f, -1.0f,  0.0f,   0.0f, -1.0f,  0.0f,
+	0.0f,  0.0f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f, -1.0f,  0.0f,   0.0f, -1.0f,  0.0f,  
 	//derecha
-	0.0f,  0.0f,  0.0f,   0.0f, -1.0f,  0.0f,   0.0f, -1.0f, -1.0f,   0.0f,  0.0f, -1.0f,
+	0.0f,  0.0f,  0.0f,   0.0f, -1.0f,  0.0f,   0.0f, -1.0f, -1.0f,   0.0f,  0.0f, -1.0f,  
 	//arriba
-	0.0f,  0.0f,  0.0f,   0.0f,  0.0f, -1.0f,   1.0f,  0.0f, -1.0f,   1.0f,  0.0f,  0.0f,
+	0.0f,  0.0f,  0.0f,   0.0f,  0.0f, -1.0f,   1.0f,  0.0f, -1.0f,   1.0f,  0.0f,  0.0f, 
 	//abajo
-	1.0f, -1.0f,  0.0f,   1.0f, -1.0f, -1.0f,   0.0f, -1.0f, -1.0f,   0.0f, -1.0f,  0.0f,
+	1.0f, -1.0f,  0.0f,   1.0f, -1.0f, -1.0f,   0.0f, -1.0f, -1.0f,   0.0f, -1.0f,  0.0f,  
 	//atras
-	1.0f,  0.0f, -1.0f,   0.0f,  0.0f, -1.0f,   0.0f, -1.0f, -1.0f,   1.0f, -1.0f, -1.0f,
+	1.0f,  0.0f, -1.0f,   0.0f,  0.0f, -1.0f,   0.0f, -1.0f, -1.0f,   1.0f, -1.0f, -1.0f,  
 	//izquierda
-	1.0f,  0.0f,  0.0f,   1.0f,  0.0f, -1.0f,   1.0f, -1.0f, -1.0f,   1.0f, -1.0f,  0.0f
+	1.0f,  0.0f,  0.0f,   1.0f,  0.0f, -1.0f,   1.0f, -1.0f, -1.0f,   1.0f, -1.0f,  0.0f  
 };
 
 GLuint indices[] = {
@@ -61,40 +63,40 @@ GLuint indices[] = {
 
 GLfloat colors[] = {
 	//delante rojo
-	1.0f, 0.0f, 0.0f, 1.0f,
-	1.0f, 0.0f, 0.0f, 1.0f,
-	1.0f, 0.0f, 0.0f, 1.0f,
-	1.0f, 0.0f, 0.0f, 1.0f,
+	1.0f, 0.0f, 0.0f, 1.0f,  
+	1.0f, 0.0f, 0.0f, 1.0f, 
+	1.0f, 0.0f, 0.0f, 1.0f,  
+	1.0f, 0.0f, 0.0f, 1.0f,  
 
 	//derecha verde
-	0.0f, 1.0f, 0.0f, 1.0f,
-	0.0f, 1.0f, 0.0f, 1.0f,
-	0.0f, 1.0f, 0.0f, 1.0f,
-	0.0f, 1.0f, 0.0f, 1.0f,
+	0.0f, 1.0f, 0.0f, 1.0f,  
+	0.0f, 1.0f, 0.0f, 1.0f,  
+	0.0f, 1.0f, 0.0f, 1.0f, 
+	0.0f, 1.0f, 0.0f, 1.0f,  
 
 	//arrriba azul
-	0.0f, 0.0f, 1.0f, 1.0f,
-	0.0f, 0.0f, 1.0f, 1.0f,
-	0.0f, 0.0f, 1.0f, 1.0f,
-	0.0f, 0.0f, 1.0f, 1.0f,
+	0.0f, 0.0f, 1.0f, 1.0f,  
+	0.0f, 0.0f, 1.0f, 1.0f,  
+	0.0f, 0.0f, 1.0f, 1.0f, 
+	0.0f, 0.0f, 1.0f, 1.0f,  
 
 	//abajo amarillo
-	1.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 0.0f, 1.0f,
-	1.0f, 1.0f, 0.0f, 1.0f,
+	1.0f, 1.0f, 0.0f, 1.0f,  
+	1.0f, 1.0f, 0.0f, 1.0f, 
+	1.0f, 1.0f, 0.0f, 1.0f, 
+	1.0f, 1.0f, 0.0f, 1.0f,  
 
 	//atras cian
-	0.0f, 1.0f, 1.0f, 1.0f,
-	0.0f, 1.0f, 1.0f, 1.0f,
-	0.0f, 1.0f, 1.0f, 1.0f,
-	0.0f, 1.0f, 1.0f, 1.0f,
+	0.0f, 1.0f, 1.0f, 1.0f,  
+	0.0f, 1.0f, 1.0f, 1.0f,  
+	0.0f, 1.0f, 1.0f, 1.0f,  
+	0.0f, 1.0f, 1.0f, 1.0f,  
 
 	//izquierda magenta
-	1.0f, 0.0f, 1.0f, 1.0f,
-	1.0f, 0.0f, 1.0f, 1.0f,
-	1.0f, 0.0f, 1.0f, 1.0f,
-	1.0f, 0.0f, 1.0f, 1.0f
+	1.0f, 0.0f, 1.0f, 1.0f,  
+	1.0f, 0.0f, 1.0f, 1.0f,  
+	1.0f, 0.0f, 1.0f, 1.0f,  
+	1.0f, 0.0f, 1.0f, 1.0f   
 };
 
 GLfloat texCoords[] = {
@@ -153,9 +155,9 @@ GLuint ImageTexture() {
 	return textureID; // Return the texture ID
 }
 
-void renderTexture() {
+void renderTexture(){
 
-
+	
 	GLubyte checkerImage[64][64][4];
 	for (int i = 0; i < 64; i++) {
 		for (int j = 0; j < 64; j++) {
@@ -166,7 +168,7 @@ void renderTexture() {
 			checkerImage[i][j][3] = (GLubyte)255;
 		}
 	}
-
+	
 	GLuint textureID;
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	glGenTextures(1, &textureID);
@@ -181,15 +183,6 @@ void renderTexture() {
 	glEnable(GL_TEXTURE_2D);
 
 }
-
-GLuint AxisLines[] = {
-	//Eje X
-	-1000.0, 0.0f, 0.0f, 1000.0f, 0.0f, 0.0f,
-	//Eje Y
-	0.0f, -1000.0, 0.0f, 0.0f, 1000.0, 0.0f,
-	//Eje Z
-	0.0f, 0.0f, -1000.0, 0.0f, 0.0f, 1000.0f
-};
 
 static void display_func() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -207,24 +200,74 @@ static void display_func() {
 
 	//glRotatef(angle, 0.0f, 1.0f, 0.0f);
 
-	glBegin(GL_LINES);
-
-	glColor3f(1.0, 1.0, 0.0);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(2.0, 0.0, 0.0);
-
-	glColor3f(1.0, 1.0, 0.0);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(0.0, 2.0, 0.0);
-
-	glColor3f(1.0, 1.0, 0.0);
-	glVertex3f(0.0, 0.0, 0.0);
-	glVertex3f(0.0, 0.0, 2.0);
-	glEnd();
-
 	//renderTexture();
 
 	ImageTexture();
+
+
+	/*
+		glBegin(GL_TRIANGLES);  // draw a cube with 12 triangles
+		// front face =================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v1-v2
+		glVertex3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(1.0f, -1.0f, 0.0f);
+		glColor4f(1.0f, 0.0f, 0.0f, 0.0f);//red
+
+		glVertex3f(1.0f, -1.0f, 0.0f);    // v2-v3-v0
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+
+
+		// right face =================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v3-v4
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v4-v5-v0
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+		// top face ===================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v5-v6
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(1.0f, 0.0f, -1.0f);
+
+		glVertex3f(1.0f, 0.0f, -1.0f);    // v6-v1-v0F
+		glVertex3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+		//...                 // draw other 3 faces
+		// bottom face ===================
+		glVertex3f(1.0f, -1.0f, 0.0f);    // v3-v2-v7
+		glVertex3f(1.0f, -1.0f, -1.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v7-v4-v3
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(1.0f, -1.0f, 0.0f);
+
+		// back face =====================
+		glVertex3f(1.0f, 0.0f, -1.0f);    // v6-v5-v4
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v4-v7-v6
+		glVertex3f(1.0f, -1.0f, -1.0f);
+		glVertex3f(1.0f, 0.0f, -1.0f);
+
+		// left face ===================
+		glVertex3f(1.0f, 0.0f, 0.0f);    // v1-v6-v7
+		glVertex3f(1.0f, 0.0f, -1.0f);
+		glVertex3f(1.0f, -1.0f, -1.0f);
+
+		glVertex3f(1.0f, -1.0f, -1.0f);    // v7-v2-v1
+		glVertex3f(1.0f, -1.0f, 0.0f);
+		glVertex3f(1.0f, 0.0f, 0.0f);
+
+			glEnd();
+		*/
+	 //Esto es cubo de forma directa
 
 	//Activa las cosas
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -273,11 +316,11 @@ int main(int argc, char** argv) {
 
 	while (processEvents()) {
 		const auto t0 = hrclock::now();
-		display_func();
+		display_func(); 
 		window.swapBuffers();
 		const auto t1 = hrclock::now();
 		const auto dt = t1 - t0;
-		if (dt < FRAME_DT) this_thread::sleep_for(FRAME_DT - dt);
+		if(dt<FRAME_DT) this_thread::sleep_for(FRAME_DT - dt);
 	}
 
 	return 0;
