@@ -29,6 +29,8 @@ wchar_t* convertToWideString(const char* str) {
 	return wideStr;
 }
 
+
+
 GLfloat vertices[] = {
 	//delante
 	0.0f,  0.0f,  0.0f,   1.0f,  0.0f,  0.0f,   1.0f, -1.0f,  0.0f,   0.0f, -1.0f,  0.0f,  
@@ -155,6 +157,7 @@ GLuint ImageTexture() {
 
 void renderTexture(){
 
+	
 	GLubyte checkerImage[64][64][4];
 	for (int i = 0; i < 64; i++) {
 		for (int j = 0; j < 64; j++) {
