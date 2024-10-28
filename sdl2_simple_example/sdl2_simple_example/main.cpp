@@ -204,6 +204,71 @@ static void display_func() {
 
 	ImageTexture();
 
+
+	/*
+		glBegin(GL_TRIANGLES);  // draw a cube with 12 triangles
+		// front face =================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v1-v2
+		glVertex3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(1.0f, -1.0f, 0.0f);
+		glColor4f(1.0f, 0.0f, 0.0f, 0.0f);//red
+
+		glVertex3f(1.0f, -1.0f, 0.0f);    // v2-v3-v0
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+
+
+		// right face =================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v3-v4
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v4-v5-v0
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+		// top face ===================
+		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v5-v6
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(1.0f, 0.0f, -1.0f);
+
+		glVertex3f(1.0f, 0.0f, -1.0f);    // v6-v1-v0F
+		glVertex3f(1.0f, 0.0f, 0.0f);
+		glVertex3f(0.0f, 0.0f, 0.0f);
+
+		//...                 // draw other 3 faces
+		// bottom face ===================
+		glVertex3f(1.0f, -1.0f, 0.0f);    // v3-v2-v7
+		glVertex3f(1.0f, -1.0f, -1.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v7-v4-v3
+		glVertex3f(0.0f, -1.0f, 0.0f);
+		glVertex3f(1.0f, -1.0f, 0.0f);
+
+		// back face =====================
+		glVertex3f(1.0f, 0.0f, -1.0f);    // v6-v5-v4
+		glVertex3f(0.0f, 0.0f, -1.0f);
+		glVertex3f(0.0f, -1.0f, -1.0f);
+
+		glVertex3f(0.0f, -1.0f, -1.0f);    // v4-v7-v6
+		glVertex3f(1.0f, -1.0f, -1.0f);
+		glVertex3f(1.0f, 0.0f, -1.0f);
+
+		// left face ===================
+		glVertex3f(1.0f, 0.0f, 0.0f);    // v1-v6-v7
+		glVertex3f(1.0f, 0.0f, -1.0f);
+		glVertex3f(1.0f, -1.0f, -1.0f);
+
+		glVertex3f(1.0f, -1.0f, -1.0f);    // v7-v2-v1
+		glVertex3f(1.0f, -1.0f, 0.0f);
+		glVertex3f(1.0f, 0.0f, 0.0f);
+
+			glEnd();
+		*/
+	 //Esto es cubo de forma directa
+
 	//Activa las cosas
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
