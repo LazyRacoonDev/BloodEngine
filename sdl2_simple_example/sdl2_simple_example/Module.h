@@ -1,6 +1,6 @@
 #pragma once
 
-#include "App.h"
+#include "Application.h"
 
 class Application;
 struct PhysBody3D;
@@ -31,4 +31,4 @@ private:
 
 	bool enabled = false;
 
-}; #pragma once
+};

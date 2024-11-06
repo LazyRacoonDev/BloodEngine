@@ -1,5 +1,10 @@
 #include "Defs.h"
+#include "Application.h"
+#include "Log.h"
+#include "SDL2/SDL.h"
 
+
+/*
 using namespace std;
 
 using hrclock = chrono::high_resolution_clock;
@@ -205,7 +210,7 @@ static void display_func() {
 	ImageTexture();
 
 
-	/*
+	
 		glBegin(GL_TRIANGLES);  // draw a cube with 12 triangles
 		// front face =================
 		glVertex3f(0.0f, 0.0f, 0.0f);    // v0-v1-v2
@@ -266,7 +271,6 @@ static void display_func() {
 		glVertex3f(1.0f, 0.0f, 0.0f);
 
 			glEnd();
-		*/
 	 //Esto es cubo de forma directa
 
 	//Activa las cosas
@@ -307,21 +311,79 @@ static bool processEvents() {
 	}
 	return true;
 }
+*/
+enum main_states
+{
+	MAIN_CREATION,
+	MAIN_START,
+	MAIN_UPDATE,
+	MAIN_FINISH,
+	MAIN_EXIT
+};
 
-int main(int argc, char** argv) {
-	MyWindow window("SDL2 Simple Example", WINDOW_SIZE.x, WINDOW_SIZE.y);
+int main(int argc, char** argv) 
+{
+	int main_return = EXIT_FAILURE;
+	main_states state = MAIN_CREATION;
+	Application* App = NULL;
 
-	init_openGL();
-	init_deviL();
+	while (state != MAIN_EXIT)
+	{
+		switch (state)
+		{
+		case MAIN_CREATION:
 
-	while (processEvents()) {
-		const auto t0 = hrclock::now();
-		display_func(); 
-		window.swapBuffers();
-		const auto t1 = hrclock::now();
-		const auto dt = t1 - t0;
-		if(dt<FRAME_DT) this_thread::sleep_for(FRAME_DT - dt);
+			App = new Application();
+			state = MAIN_START;
+			break;
+
+		case MAIN_START:
+
+			if (App->Init() == false)
+			{
+				state = MAIN_EXIT;
+			}
+			else
+			{
+				state = MAIN_UPDATE;
+			}
+
+			break;
+
+		case MAIN_UPDATE:
+		{
+
+			int update_return = App->Update();
+
+			if (update_return == UPDATE_ERROR)
+			{
+				state = MAIN_EXIT;
+			}
+			else if (update_return == UPDATE_STOP)
+				state = MAIN_FINISH;
+
+			break;
+
+		}
+
+		case MAIN_FINISH:
+
+			if (App->CleanUp() == false)
+			{ }
+			
+			else
+				main_return = EXIT_SUCCESS;
+
+			state = MAIN_EXIT;
+
+			break;
+
+		}
 	}
 
-	return 0;
+	External = nullptr;
+	delete App;
+
+
+	return main_return;
 }
