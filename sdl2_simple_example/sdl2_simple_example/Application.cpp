@@ -1,18 +1,23 @@
-#include "App.h"
+#include "Application.h"
 
 #include "Module.h"
+#include "ModuleWindow.h"
+
+#include "Log.h"
 
 
-extern App* External = nullptr;
+extern Application* External = nullptr;
 
-App::App()
+Application::Application()
 {
 	External = this;
 
+	window = new ModuleWindow(this);
+	AddModule(window);
 
 }
 
-App::~App()
+Application::~Application()
 {
 	for (std::vector<Module*>::iterator it = list_modules.begin(); it != list_modules.end(); ++it)
 	{
@@ -21,7 +26,7 @@ App::~App()
 	}
 }
 
-bool App::Init()
+bool Application::Init()
 {
 	bool ret = true;
 
@@ -32,7 +37,6 @@ bool App::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
-	LOG("Application Start --------------");
 	for (std::vector<Module*>::const_iterator it = list_modules.cbegin(); it != list_modules.cend() && ret; ++it)
 	{
 		(*it)->Start();
@@ -43,19 +47,19 @@ bool App::Init()
 }
 
 // ---------------------------------------------
-void App::PrepareUpdate()
+void Application::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
 	ms_timer.Start();
 }
 
 // ---------------------------------------------
-void App::FinishUpdate()
+void Application::FinishUpdate()
 {
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
-update_status App::Update()
+update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 	PrepareUpdate();
@@ -79,7 +83,7 @@ update_status App::Update()
 	return ret;
 }
 
-bool App::CleanUp()
+bool Application::CleanUp()
 {
 	bool ret = true;
 	for (std::vector<Module*>::reverse_iterator it = list_modules.rbegin(); it != list_modules.rend() && ret; ++it)
@@ -89,22 +93,22 @@ bool App::CleanUp()
 	return ret;
 }
 
-float App::GetFPS()
+float Application::GetFPS()
 {
 	return 1 / dt;
 }
 
-float App::GetDT()
+float Application::GetDT()
 {
 	return dt;
 }
 
-float App::GetMS()
+float Application::GetMS()
 {
 	return dt * 1000;
 }
 
-void App::AddModule(Module* mod)
+void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);
 }
