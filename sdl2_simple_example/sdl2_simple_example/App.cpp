@@ -1,23 +1,18 @@
-#include "Application.h"
+#include "App.h"
 
 #include "Module.h"
-#include "ModuleWindow.h"
-
-#include "Log.h"
 
 
-extern Application* External = nullptr;
+extern App* External = nullptr;
 
-Application::Application()
+App::App()
 {
 	External = this;
 
-	window = new ModuleWindow(this);
-	AddModule(window);
 
 }
 
-Application::~Application()
+App::~App()
 {
 	for (std::vector<Module*>::iterator it = list_modules.begin(); it != list_modules.end(); ++it)
 	{
@@ -26,7 +21,7 @@ Application::~Application()
 	}
 }
 
-bool Application::Init()
+bool App::Init()
 {
 	bool ret = true;
 
@@ -37,6 +32,7 @@ bool Application::Init()
 	}
 
 	// After all Init calls we call Start() in all modules
+	LOG("Application Start --------------");
 	for (std::vector<Module*>::const_iterator it = list_modules.cbegin(); it != list_modules.cend() && ret; ++it)
 	{
 		(*it)->Start();
@@ -47,19 +43,19 @@ bool Application::Init()
 }
 
 // ---------------------------------------------
-void Application::PrepareUpdate()
+void App::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
 	ms_timer.Start();
 }
 
 // ---------------------------------------------
-void Application::FinishUpdate()
+void App::FinishUpdate()
 {
 }
 
 // Call PreUpdate, Update and PostUpdate on all modules
-update_status Application::Update()
+update_status App::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 	PrepareUpdate();
@@ -83,7 +79,7 @@ update_status Application::Update()
 	return ret;
 }
 
-bool Application::CleanUp()
+bool App::CleanUp()
 {
 	bool ret = true;
 	for (std::vector<Module*>::reverse_iterator it = list_modules.rbegin(); it != list_modules.rend() && ret; ++it)
@@ -93,22 +89,22 @@ bool Application::CleanUp()
 	return ret;
 }
 
-float Application::GetFPS()
+float App::GetFPS()
 {
 	return 1 / dt;
 }
 
-float Application::GetDT()
+float App::GetDT()
 {
 	return dt;
 }
 
-float Application::GetMS()
+float App::GetMS()
 {
 	return dt * 1000;
 }
 
-void Application::AddModule(Module* mod)
+void App::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);
 }
