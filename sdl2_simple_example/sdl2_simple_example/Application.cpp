@@ -1,3 +1,4 @@
+<<<<<<< HEAD:sdl2_simple_example/sdl2_simple_example/Application.cpp
 #include "Application.h"
 
 #include "Module.h"
@@ -111,3 +112,5 @@ void Application::AddModule(Module* mod)
 {
 	list_modules.push_back(mod);
 }
+=======
+>>>>>>> parent of e599065 (Created Module and Apps):sdl2_simple_example/sdl2_simple_example/App.cpp

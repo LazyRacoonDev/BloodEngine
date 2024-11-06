@@ -1,4 +1,5 @@
 #pragma once
+<<<<<<< HEAD:sdl2_simple_example/sdl2_simple_example/Application.h
 
 #include "Globals.h"
 #include "Timer.h"
@@ -33,3 +34,5 @@ private:
 };
 
 extern Application* External;
+=======
+>>>>>>> parent of e599065 (Created Module and Apps):sdl2_simple_example/sdl2_simple_example/App.h
