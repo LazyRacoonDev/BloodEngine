@@ -1,7 +1,6 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleWindow.h"
-#include "Log.h"
 #include "SDL2/SDL.h"
 
 using namespace std;
@@ -59,7 +58,6 @@ bool ModuleWindow::Init()
 
 		if (window == NULL)
 		{
-			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			ret = false;
 		}
 		else

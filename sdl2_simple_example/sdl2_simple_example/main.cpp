@@ -1,6 +1,5 @@
 #include "Defs.h"
 #include "Application.h"
-#include "Log.h"
 #include "SDL2/SDL.h"
 
 

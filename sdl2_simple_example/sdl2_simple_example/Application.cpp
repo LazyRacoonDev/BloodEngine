@@ -3,7 +3,6 @@
 #include "Module.h"
 #include "ModuleWindow.h"
 
-#include "Log.h"
 
 
 extern Application* External = nullptr;
