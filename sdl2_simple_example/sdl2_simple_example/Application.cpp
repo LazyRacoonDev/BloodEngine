@@ -13,7 +13,6 @@ Application::Application()
 
 	window = new ModuleWindow(this);
 	AddModule(window);
-
 }
 
 Application::~Application()
@@ -56,6 +55,9 @@ void Application::FinishUpdate()
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
+
+	if (!processEvents()) ret = UPDATE_STOP;
+
 	PrepareUpdate();
 
 	for (std::vector<Module*>::const_iterator it = list_modules.cbegin(); it != list_modules.cend() && ret == UPDATE_CONTINUE; ++it)

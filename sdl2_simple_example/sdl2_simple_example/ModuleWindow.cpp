@@ -1,6 +1,9 @@
 #include "ModuleWindow.h"
 #include "Application.h"
 #include "Globals.h"
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
 
 ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -54,6 +57,11 @@ bool ModuleWindow::Init()
         else
         {
             context = SDL_GL_CreateContext(window);
+
+            ImGui::CreateContext();
+            ImGui_ImplSDL2_InitForOpenGL(window, context);
+            ImGui_ImplOpenGL3_Init("#version 130");
+
             if (context == nullptr)
             {
                 SDL_Log("No se pudo crear el contexto OpenGL: %s", SDL_GetError());
@@ -68,11 +76,10 @@ bool ModuleWindow::Init()
             }
         }
     }
-
     return ret;
 }
 
-static bool processEvents() {
+bool processEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
@@ -98,7 +105,6 @@ bool ModuleWindow::CleanUp()
     {
         SDL_DestroyWindow(window);
     }
-
     SDL_Quit();
     return true;
 }
@@ -125,8 +131,31 @@ update_status ModuleWindow::PreUpdate(float dt) {
 }
 
 update_status ModuleWindow::Update(float dt) {
+
+    ImGui_ImplOpenGL3_NewFrame();
+    ImGui_ImplSDL2_NewFrame();
+    ImGui::NewFrame();
+
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("Menu")) {
+            if (ImGui::MenuItem("Adeu")) {
+
+                SDL_Event quit_event;
+                quit_event.type = SDL_QUIT;
+                SDL_PushEvent(&quit_event);
+
+            }
+            ImGui::EndMenu();
+        }
+    }
+
+    ImGui::EndMainMenuBar();
+
+    ImGui::Render();
+    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
     SwapBuffers();
-    return UPDATE_CONTINUE; 
+    return UPDATE_CONTINUE;
 }
 
 update_status ModuleWindow::PostUpdate(float dt) {

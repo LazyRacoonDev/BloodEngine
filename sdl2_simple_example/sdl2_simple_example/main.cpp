@@ -1,5 +1,8 @@
 #include "Defs.h"
 #include "Application.h"
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_opengl3.h"
 
 using namespace std;
 
@@ -22,6 +25,8 @@ static void init_openGL() {
 static void init_deviL() {
 	ilInit();
 }
+
+
 
 enum main_states
 {
