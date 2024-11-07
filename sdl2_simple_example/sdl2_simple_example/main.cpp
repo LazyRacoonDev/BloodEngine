@@ -1,6 +1,5 @@
 #include "Defs.h"
 #include "Application.h"
-#include "SDL2/SDL.h"
 
 using namespace std;
 
@@ -23,7 +22,6 @@ static void init_openGL() {
 static void init_deviL() {
 	ilInit();
 }
-
 
 enum main_states
 {
@@ -51,7 +49,6 @@ int main(int argc, char** argv)
 			break;
 
 		case MAIN_START:
-
 			if (App->Init() == false)
 			{
 				state = MAIN_EXIT;

@@ -30,7 +30,6 @@ bool ModuleWindow::Init()
 
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-        SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
         SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
         SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8);
@@ -62,8 +61,10 @@ bool ModuleWindow::Init()
             }
             else
             {
+                SDL_GL_MakeCurrent(window, context);
+                SDL_GL_SetSwapInterval(1);
                 glEnable(GL_DEPTH_TEST);
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
             }
         }
     }
@@ -71,6 +72,20 @@ bool ModuleWindow::Init()
     return ret;
 }
 
+static bool processEvents() {
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+        case SDL_QUIT:
+            return false;
+            break;
+        default:
+            ImGui_ImplSDL2_ProcessEvent(&event);
+            break;
+        }
+    }
+    return true;
+}
 
 bool ModuleWindow::CleanUp()
 {
@@ -102,26 +117,18 @@ void ModuleWindow::SwapBuffers()
 }
 
 bool ModuleWindow::Start() {
-    // Implementación del método Start
-    return true; // o la implementación necesaria
+    return true;
 }
 
 update_status ModuleWindow::PreUpdate(float dt) {
-    // Implementación del método PreUpdate
-    return UPDATE_CONTINUE; // o la implementación necesaria
+    return UPDATE_CONTINUE; 
 }
 
 update_status ModuleWindow::Update(float dt) {
-    // Implementación del método Update
-    return UPDATE_CONTINUE; // o la implementación necesaria
+    SwapBuffers();
+    return UPDATE_CONTINUE; 
 }
 
 update_status ModuleWindow::PostUpdate(float dt) {
-    // Implementación del método PostUpdate
-    return UPDATE_CONTINUE; // o la implementación necesaria
-}
-
-bool ModuleWindow::CleanUp() {
-    // Implementación del método CleanUp
-    return true; // o la implementación necesaria
+    return UPDATE_CONTINUE; 
 }

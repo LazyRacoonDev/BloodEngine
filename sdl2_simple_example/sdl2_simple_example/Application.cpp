@@ -29,13 +29,11 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Call Init() in all modules
 	for (std::vector<Module*>::const_iterator it = list_modules.cbegin(); it != list_modules.cend() && ret; ++it)
 	{
 		(*it)->Init();
 	}
 
-	// After all Init calls we call Start() in all modules
 	for (std::vector<Module*>::const_iterator it = list_modules.cbegin(); it != list_modules.cend() && ret; ++it)
 	{
 		(*it)->Start();
@@ -45,19 +43,16 @@ bool Application::Init()
 	return ret;
 }
 
-// ---------------------------------------------
 void Application::PrepareUpdate()
 {
 	dt = (float)ms_timer.Read() / 1000.0f;
 	ms_timer.Start();
 }
 
-// ---------------------------------------------
 void Application::FinishUpdate()
 {
 }
 
-// Call PreUpdate, Update and PostUpdate on all modules
 update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;

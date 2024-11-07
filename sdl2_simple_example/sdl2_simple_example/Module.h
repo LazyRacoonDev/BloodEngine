@@ -20,8 +20,5 @@ public:
 	virtual update_status PostUpdate(float dt) = 0;  
 	virtual bool CleanUp() = 0;
 
-	virtual bool CleanUp();
-
 	virtual void OnCollision(PhysBody3D* body1, PhysBody3D* body2);
-
 };
