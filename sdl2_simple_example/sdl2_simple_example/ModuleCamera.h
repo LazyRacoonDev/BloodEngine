@@ -34,7 +34,7 @@ private:
 
 public:
 	float fov = 60.0f;
-	float nearPlane = 0.125f;
+	float nearPlane = 0.250f;
 	float farPlane = 512.0f;
 	int screenWidth, screenHeight;
 
