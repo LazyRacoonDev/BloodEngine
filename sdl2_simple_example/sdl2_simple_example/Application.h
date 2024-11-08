@@ -5,11 +5,13 @@
 
 class Module;
 class ModuleWindow;
+class ModuleConsole;
 
 class Application
 {
 public:
 	ModuleWindow* window;
+	ModuleConsole* console;
 private:
 	Timer ms_timer;
 	float dt;

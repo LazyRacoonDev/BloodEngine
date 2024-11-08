@@ -134,7 +134,6 @@ const int GRID_SIZE = 20;
 const float LINE_SPACING = 1.0f;
 
 void DrawGrid() {
-    // Enable line drawing mode
     glBegin(GL_LINES);
 
 
@@ -166,15 +165,12 @@ void DrawGrid() {
 
 update_status ModuleWindow::Update(float dt)
 {
-    // Start a new ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-    // Create the main menu bar
     if (ImGui::BeginMainMenuBar()) {
 
-        // Existing "Menu"
         if (ImGui::BeginMenu("Menu")) {
             if (ImGui::MenuItem("Adeu")) {
                 SDL_Event quit_event;
