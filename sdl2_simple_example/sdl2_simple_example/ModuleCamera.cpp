@@ -75,6 +75,26 @@ void ModuleCamera::HandleInput()
 	ref += newPos;
 }
 
+void ModuleCamera::FrameSelected()
+{
+	if (app->editor->selectedGameObject)
+	{
+		pos = glm::vec3(
+			app->editor->selectedGameObject->transform->position.x,
+			app->editor->selectedGameObject->transform->position.y + 5.0f,
+			app->editor->selectedGameObject->transform->position.z + 5.0f
+		);
+		ref = app->editor->selectedGameObject->transform->position;
+		LookAt(ref);
+	}
+	else
+	{
+		pos = glm::vec3(0.0f, 5.0f, 5.0f);
+		ref = glm::vec3(0.0f, 0.0f, 0.0f);
+		LookAt(ref);
+	}
+}
+
 void ModuleCamera::Movement(glm::vec3& newPos, float speed, float fastSpeed)
 {
 	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT
@@ -143,3 +163,33 @@ void ModuleCamera::Rotation()
 	else if (isZooming)
 		isZooming = false;
 }
+
+void ModuleCamera::RotateCamera(int dx, int dy)
+{
+	float sensitivity = 0.005f;
+
+	if (dx != 0)
+	{
+		float DeltaX = (float)dx * sensitivity;
+
+		X = RotateVector(X, DeltaX, glm::vec3(0.0f, 1.0f, 0.0f));
+		Y = RotateVector(Y, DeltaX, glm::vec3(0.0f, 1.0f, 0.0f));
+		Z = RotateVector(Z, DeltaX, glm::vec3(0.0f, 1.0f, 0.0f));
+	}
+
+	if (dy != 0)
+	{
+		float DeltaY = (float)dy * sensitivity;
+
+		Y = RotateVector(Y, DeltaY, X);
+		Z = RotateVector(Z, DeltaY, X);
+
+		if (Y.y < 0.0f)
+		{
+			Z = glm::vec3(0.0f, Z.y > 0.0f ? 1.0f : -1.0f, 0.0f);
+			Y = glm::cross(Z, X);
+		}
+	}
+}
+
+

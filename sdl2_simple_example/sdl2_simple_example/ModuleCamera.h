@@ -14,8 +14,8 @@ public:
 
 	bool Start();
 	bool Update(float dt);
-	void HandleInput();
 	void FrameSelected();
+	void HandleInput();
 	bool CleanUp();
 
 	void LookAt(const glm::vec3& spot);
