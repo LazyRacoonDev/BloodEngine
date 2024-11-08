@@ -64,6 +64,8 @@ void ModuleCamera::HandleInput()
 
 	HandleRotation();
 
+	/*Al pulsar F focusear en el objeto*/
+
 	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
 		FrameSelected();
@@ -102,4 +104,42 @@ void ModuleCamera::Zoom(float zoomSpeed)
 
 	if (mouseZ != 0)
 		pos -= Z * zoomSpeed * (mouseZ > 0 ? 1.0f : -1.0f);
+}
+
+void ModuleCamera::Rotation()
+{
+	int dx = -app->input->GetMouseXMotion();
+	int dy = -app->input->GetMouseYMotion();
+
+	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT &&
+		app->input->GetKey(SDL_SCANCODE_LALT) == KEY_IDLE)
+	{
+		RotateCamera(dx, dy);
+	}
+
+	if (app->input->GetMouseButton(SDL_BUTTON_LEFT) == KEY_REPEAT
+		&& app->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
+	{
+		pos -= ref;
+		RotateCamera(dx, dy);
+		pos = ref + Z * glm::length(pos);
+		LookAt(ref);
+
+		SetCursor(CursorType::ORBIT);
+	}
+	else if (isOrbiting)
+		isOrbiting = false;
+
+	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT
+		&& app->input->GetKey(SDL_SCANCODE_LALT) == KEY_REPEAT)
+	{
+		float sensitivity = 0.01f;
+		float zoomDelta = dy * sensitivity;
+		glm::vec3 direction = glm::normalize(pos - ref);
+		pos += direction * zoomDelta;
+
+		SetCursor(CursorType::ZOOM);
+	}
+	else if (isZooming)
+		isZooming = false;
 }
