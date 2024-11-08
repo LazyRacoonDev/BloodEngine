@@ -48,3 +48,47 @@ bool ModuleCamera::Update(float dt)
 
 	return true;
 }
+
+void ModuleCamera::HandleInput()
+{
+	glm::vec3 newPos(0, 0, 0);
+
+	float dt = app->GetDT();
+	float speed = 5.0f * dt;
+	float zoomSpeed = 20.0f * dt;
+	float fastSpeed = 10.0f * dt;
+
+	HandleMovement(newPos, speed, fastSpeed);
+
+	HandleZoom(zoomSpeed);
+
+	HandleRotation();
+
+	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
+	{
+		FrameSelected();
+	}
+
+	pos += newPos;
+	ref += newPos;
+}
+
+void ModuleCamera::HandleMovement(glm::vec3& newPos, float speed, float fastSpeed)
+{
+	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT
+		&& app->input->GetKey(SDL_SCANCODE_LALT) == KEY_IDLE)
+	{
+		if (app->input->GetKey(SDL_SCANCODE_LSHIFT) == KEY_REPEAT) speed = fastSpeed;
+		
+		/*Movimiento Vertical*/
+
+		if (app->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) newPos -= Z * speed;
+		if (app->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) newPos += Z * speed;
+		
+		/*Movimiento Horizontal*/
+
+		if (app->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) newPos -= X * speed;
+		if (app->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) newPos += X * speed;
+
+		SetCursor(CursorType::FREELOOK);
+	}
