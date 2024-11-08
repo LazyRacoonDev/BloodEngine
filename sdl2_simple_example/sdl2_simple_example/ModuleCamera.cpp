@@ -15,3 +15,36 @@ ModuleCamera::ModuleCamera(Application* app) : Module(app)
 	pos = glm::vec3(0.0f, 5.0f, 5.0f);
 	ref = glm::vec3(0.0f, 0.0f, 0.0f);
 }
+
+ModuleCamera::~ModuleCamera()
+{}
+
+bool ModuleCamera::Start()
+{
+	LOG(LogType::LOG_INFO, "Setting up the camera");
+
+	LookAt(ref);
+
+	return true;
+}
+
+bool ModuleCamera::CleanUp()
+{
+	LOG(LogType::LOG_INFO, "Cleaning camera");
+
+	return true;
+
+bool ModuleCamera::Update(float dt)
+{
+	if (((!isMouseInside) || (!isZooming && !isFreeLook && !isOrbiting && !isDragging)) && !isDefaultCursor)
+	{
+			SetCursor(CursorType::DEFAULT);
+	}
+
+	if (isMouseInside)
+		HandleInput();
+
+	CalculateViewMatrix();
+
+	return true;
+}
