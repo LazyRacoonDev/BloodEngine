@@ -93,6 +93,8 @@ void ModuleCamera::FrameSelected()
 		ref = glm::vec3(0.0f, 0.0f, 0.0f);
 		LookAt(ref);
 	}
+
+
 }
 
 void ModuleCamera::Movement(glm::vec3& newPos, float speed, float fastSpeed)
@@ -191,5 +193,32 @@ void ModuleCamera::RotateCamera(int dx, int dy)
 		}
 	}
 }
+
+void ModuleCamera::LookAt(const glm::vec3& spot)
+{
+	ref = spot;
+
+	Z = glm::normalize(pos - ref);
+	X = glm::normalize(glm::cross(glm::vec3(0.0f, 1.0f, 0.0f), Z));
+	Y = glm::cross(Z, X);
+
+	CalculateViewMatrix();
+}
+
+const glm::mat4& ModuleCamera::GetViewMatrix() const
+{
+	return viewMatrix;
+}
+
+void ModuleCamera::CalculateViewMatrix()
+{
+	viewMatrix = glm::mat4(
+		X.x, Y.x, Z.x, 0.0f,
+		X.y, Y.y, Z.y, 0.0f,
+		X.z, Y.z, Z.z, 0.0f,
+		-glm::dot(X, pos), -glm::dot(Y, pos), -glm::dot(Z, pos), 1.0f
+	);
+}
+
 
 
