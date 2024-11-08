@@ -220,5 +220,35 @@ void ModuleCamera::CalculateViewMatrix()
 	);
 }
 
+glm::mat4 ModuleCamera::GetProjectionMatrix() const
+{
+	float aspectRatio = static_cast<float>(screenWidth) / static_cast<float>(screenHeight);
+	return glm::perspective(glm::radians(fov), aspectRatio, nearPlane, farPlane);
+}
+
+glm::vec3 ModuleCamera::RotateVector(glm::vec3 const& vector, float angle, glm::vec3 const& axis)
+{
+	glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), angle, axis);
+
+	glm::vec4 vector4 = glm::vec4(vector, 1.0f);
+
+	glm::vec4 rotatedVector = rotationMatrix * vector4;
+
+	return glm::vec3(rotatedVector);
+}
+
+void ModuleCamera::SetCursor(CursorType cursorType)
+{
+	if (app->input->GetCursor() != cursorType)
+	{
+		app->input->ChangeCursor(cursorType);
+
+		isDefaultCursor = (cursorType == CursorType::DEFAULT);
+		isFreeLook = (cursorType == CursorType::FREELOOK);
+		isZooming = (cursorType == CursorType::ZOOM);
+		isOrbiting = (cursorType == CursorType::ORBIT);
+		isDragging = (cursorType == CursorType::DRAG);
+	}
+}
 
 
