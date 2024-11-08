@@ -73,7 +73,7 @@ void ModuleCamera::HandleInput()
 	ref += newPos;
 }
 
-void ModuleCamera::HandleMovement(glm::vec3& newPos, float speed, float fastSpeed)
+void ModuleCamera::Movement(glm::vec3& newPos, float speed, float fastSpeed)
 {
 	if (app->input->GetMouseButton(SDL_BUTTON_RIGHT) == KEY_REPEAT
 		&& app->input->GetKey(SDL_SCANCODE_LALT) == KEY_IDLE)
@@ -96,7 +96,7 @@ void ModuleCamera::HandleMovement(glm::vec3& newPos, float speed, float fastSpee
 		isDragging = false;
 }
 
-void ModuleCamera::HandleZoom(float zoomSpeed)
+void ModuleCamera::Zoom(float zoomSpeed)
 {
 	int mouseZ = app->input->GetMouseZ();
 
