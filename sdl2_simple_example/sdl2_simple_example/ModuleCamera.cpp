@@ -92,3 +92,14 @@ void ModuleCamera::HandleMovement(glm::vec3& newPos, float speed, float fastSpee
 
 		SetCursor(CursorType::FREELOOK);
 	}
+	else if (isDragging)
+		isDragging = false;
+}
+
+void ModuleCamera::HandleZoom(float zoomSpeed)
+{
+	int mouseZ = app->input->GetMouseZ();
+
+	if (mouseZ != 0)
+		pos -= Z * zoomSpeed * (mouseZ > 0 ? 1.0f : -1.0f);
+}
