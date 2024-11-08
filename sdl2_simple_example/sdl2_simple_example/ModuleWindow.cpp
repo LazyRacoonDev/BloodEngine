@@ -72,7 +72,7 @@ bool ModuleWindow::Init()
                 SDL_GL_MakeCurrent(window, context);
                 SDL_GL_SetSwapInterval(1);
                 glEnable(GL_DEPTH_TEST);
-                glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             }
         }
     }
@@ -130,31 +130,107 @@ update_status ModuleWindow::PreUpdate(float dt) {
     return UPDATE_CONTINUE; 
 }
 
-update_status ModuleWindow::Update(float dt) {
+const int GRID_SIZE = 20;  
+const float LINE_SPACING = 1.0f;
 
+void DrawGrid() {
+    // Enable line drawing mode
+    glBegin(GL_LINES);
+
+
+    glColor3f(1.0f, 0.0f, 0.0f); 
+    glVertex3f(-GRID_SIZE * LINE_SPACING, 0.0f, 0.0f);
+    glVertex3f(GRID_SIZE * LINE_SPACING, 0.0f, 0.0f); 
+
+
+    glColor3f(0.0f, 0.0f, 1.0f);  
+    glVertex3f(0.0f, 0.0f, -GRID_SIZE * LINE_SPACING); 
+    glVertex3f(0.0f, 0.0f, GRID_SIZE * LINE_SPACING);  
+
+    glColor3f(0.0f, 1.0f, 0.0f);  
+    glVertex3f(0.0f, -GRID_SIZE * LINE_SPACING, 0.0f); 
+    glVertex3f(0.0f, GRID_SIZE * LINE_SPACING, 0.0f);  
+
+    glColor3f(0.5f, 0.5f, 0.5f); 
+    for (int i = -GRID_SIZE; i <= GRID_SIZE; ++i) {
+        
+        glVertex3f(i * LINE_SPACING, 0.0f, -GRID_SIZE * LINE_SPACING);
+        glVertex3f(i * LINE_SPACING, 0.0f, GRID_SIZE * LINE_SPACING);
+
+        glVertex3f(-GRID_SIZE * LINE_SPACING, 0.0f, i * LINE_SPACING);
+        glVertex3f(GRID_SIZE * LINE_SPACING, 0.0f, i * LINE_SPACING);
+    }
+
+    glEnd();
+}
+
+update_status ModuleWindow::Update(float dt)
+{
+    // Start a new ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
+    // Create the main menu bar
     if (ImGui::BeginMainMenuBar()) {
+
+        // Existing "Menu"
         if (ImGui::BeginMenu("Menu")) {
             if (ImGui::MenuItem("Adeu")) {
-
                 SDL_Event quit_event;
                 quit_event.type = SDL_QUIT;
                 SDL_PushEvent(&quit_event);
-
             }
             ImGui::EndMenu();
         }
+
+        // New "Objects" menu at the top level
+        if (ImGui::BeginMenu("Objects")) 
+        {
+
+            if (ImGui::MenuItem("Create Plane")) 
+            {
+
+            }
+
+            if (ImGui::MenuItem("Create Cube")) 
+            {
+
+            }
+
+            if (ImGui::MenuItem("Create Sphere")) 
+            {
+
+            }
+
+            if (ImGui::MenuItem("Create Pyramid")) 
+            {
+
+            }
+
+            ImGui::EndMenu(); 
+        }
+
+        ImGui::EndMainMenuBar();
     }
 
-    ImGui::EndMainMenuBar();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glLoadIdentity();
+
+    gluPerspective(45.0f, (GLfloat)Width / (GLfloat)Height, 0.1f, 100.0f);
+
+    gluLookAt(25.0f, 25.0f, -25.0f, 
+        0.0f, 0.0f, 0.0f,      
+        0.0f, 1.0f, 0.0f);     
+
+    DrawGrid();
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     SwapBuffers();
+
     return UPDATE_CONTINUE;
 }
 
