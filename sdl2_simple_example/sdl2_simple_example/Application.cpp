@@ -2,7 +2,7 @@
 
 #include "Module.h"
 #include "ModuleWindow.h"
-#include "ModuleConsole.h"
+//#include "ModuleConsole.h"
 
 
 
@@ -13,9 +13,9 @@ Application::Application()
 	External = this;
 
 	window = new ModuleWindow(this);
-	console = new ModuleConsole(this);
+	//console = new ModuleConsole(this);
 	AddModule(window);
-	AddModule(console);
+	//AddModule(console);
 }
 
 Application::~Application()
