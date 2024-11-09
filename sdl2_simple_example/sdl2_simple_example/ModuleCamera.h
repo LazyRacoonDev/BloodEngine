@@ -14,7 +14,7 @@ public:
 
 	bool Start();
 	bool Update(float dt);
-	void FrameSelected();
+	void FocusSelected();
 	void HandleInput();
 	bool CleanUp();
 

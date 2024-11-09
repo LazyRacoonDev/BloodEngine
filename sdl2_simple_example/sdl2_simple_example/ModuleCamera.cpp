@@ -68,14 +68,14 @@ void ModuleCamera::HandleInput()
 
 	if (app->input->GetKey(SDL_SCANCODE_F) == KEY_DOWN)
 	{
-		FrameSelected();
+		FocusSelected();
 	}
 
 	pos += newPos;
 	ref += newPos;
 }
 
-void ModuleCamera::FrameSelected()
+void ModuleCamera::FocusSelected()
 {
 	if (app->editor->selectedGameObject)
 	{
