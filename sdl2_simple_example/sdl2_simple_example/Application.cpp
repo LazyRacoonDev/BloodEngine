@@ -3,6 +3,7 @@
 #include "Module.h"
 #include "ModuleWindow.h"
 //#include "ModuleConsole.h"
+#include "ModuleCamera.h"
 
 
 
@@ -14,8 +15,10 @@ Application::Application()
 
 	window = new ModuleWindow(this);
 	//console = new ModuleConsole(this);
+	camera = new ModuleCamera(this);
 	AddModule(window);
 	//AddModule(console);
+	AddModule(camera);
 }
 
 Application::~Application()
