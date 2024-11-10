@@ -8,7 +8,6 @@
 #include <glm/glm.hpp>
 #include <SDL2/SDL_events.h>
 #include "imgui_impl_sdl2.h"
-#include "MyWindow.h"
 #include "IL/il.h"
 #include "Windows.h"
 
