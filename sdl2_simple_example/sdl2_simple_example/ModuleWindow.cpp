@@ -109,6 +109,19 @@ bool ModuleWindow::CleanUp()
     return true;
 }
 
+void ModuleWindow::SetTitle(const char* title)
+{
+    if (window != nullptr)
+    {
+        SDL_SetWindowTitle(window, title);
+    }
+}
+
+void ModuleWindow::SwapBuffers()
+{
+    SDL_GL_SwapWindow(window);
+}
+
 bool ModuleWindow::Start() {
     return true;
 }
@@ -219,17 +232,4 @@ update_status ModuleWindow::Update(float dt)
 
 update_status ModuleWindow::PostUpdate(float dt) {
     return UPDATE_CONTINUE; 
-}
-
-void ModuleWindow::SetTitle(const char* title)
-{
-    if (window != nullptr)
-    {
-        SDL_SetWindowTitle(window, title);
-    }
-}
-
-void ModuleWindow::SwapBuffers()
-{
-    SDL_GL_SwapWindow(window);
 }
