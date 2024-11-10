@@ -5,13 +5,15 @@
 
 class Module;
 class ModuleWindow;
-class ModuleInputs;  // Declaración adelantada del módulo de inputs
+class ModuleInputs;
+class ModuleCamera;  // Declaración adelantada de ModuleCamera
 
 class Application
 {
 public:
     ModuleWindow* window;       // Módulo de ventana
     ModuleInputs* inputs;       // Módulo de inputs (manejador de eventos)
+    ModuleCamera* camera;       // Módulo de cámara para control de vista
 
 private:
     Timer ms_timer;             // Temporizador para delta time
@@ -22,8 +24,10 @@ public:
     Application();
     ~Application();
 
-    bool Init();                // Inicializa todos los módulos
+    bool Init();     // Inicializa todos los módulos
+    update_status PreUpdate();
     update_status Update();     // Llama a la secuencia de actualización de cada módulo
+    update_status PostUpdate;
     bool CleanUp();             // Limpia y elimina todos los módulos
 
     float GetFPS();             // Obtiene el FPS actual

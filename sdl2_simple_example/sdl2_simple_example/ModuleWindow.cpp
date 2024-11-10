@@ -4,6 +4,10 @@
 #include "imgui.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
+#include <glm/gtc/matrix_transform.hpp>
+
+const int GRID_SIZE = 20;
+const float LINE_SPACING = 1.0f;
 
 ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -72,11 +76,31 @@ bool ModuleWindow::Init()
                 SDL_GL_MakeCurrent(window, context);
                 SDL_GL_SetSwapInterval(1);
                 glEnable(GL_DEPTH_TEST);
-                glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+                glClearColor(0.1f, 0.1f, 0.1f, 1.0f);  // Color gris oscuro
+
+                SetCameraView();  // Configura la vista de la cámara
             }
         }
     }
     return ret;
+}
+
+void ModuleWindow::SetCameraView()
+{
+    glm::vec3 cameraPosition(3.0f, 3.0f, 3.0f);
+    glm::vec3 cameraTarget(0.0f, 0.0f, 0.0f);
+    glm::vec3 upVector(0.0f, 1.0f, 0.0f);
+
+    viewMatrix = glm::lookAt(cameraPosition, cameraTarget, upVector);
+
+    float aspectRatio = static_cast<float>(Width) / static_cast<float>(Height);
+    glm::mat4 projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadMatrixf(&projectionMatrix[0][0]);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(&viewMatrix[0][0]);
 }
 
 bool ModuleWindow::CleanUp()
@@ -94,18 +118,8 @@ bool ModuleWindow::CleanUp()
     return true;
 }
 
-bool ModuleWindow::Start() {
-    return true;
-}
-
-update_status ModuleWindow::PreUpdate(float dt) {
-    return UPDATE_CONTINUE;
-}
-
-const int GRID_SIZE = 20;
-const float LINE_SPACING = 1.0f;
-
-void DrawGrid() {
+void ModuleWindow::DrawGrid()
+{
     glBegin(GL_LINES);
 
     glColor3f(1.0f, 0.0f, 0.0f);
@@ -121,8 +135,8 @@ void DrawGrid() {
     glVertex3f(0.0f, GRID_SIZE * LINE_SPACING, 0.0f);
 
     glColor3f(0.5f, 0.5f, 0.5f);
-    for (int i = -GRID_SIZE; i <= GRID_SIZE; ++i) {
-
+    for (int i = -GRID_SIZE; i <= GRID_SIZE; ++i)
+    {
         glVertex3f(i * LINE_SPACING, 0.0f, -GRID_SIZE * LINE_SPACING);
         glVertex3f(i * LINE_SPACING, 0.0f, GRID_SIZE * LINE_SPACING);
 
@@ -139,33 +153,7 @@ update_status ModuleWindow::Update(float dt)
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 
-    if (ImGui::BeginMainMenuBar()) {
-
-        if (ImGui::BeginMenu("Menu")) {
-            if (ImGui::MenuItem("Adeu")) {
-                SDL_Event quit_event;
-                quit_event.type = SDL_QUIT;
-                SDL_PushEvent(&quit_event);
-            }
-            ImGui::EndMenu();
-        }
-
-        if (ImGui::BeginMenu("Objects"))
-        {
-            if (ImGui::MenuItem("Create Plane")) {}
-            if (ImGui::MenuItem("Create Cube")) {}
-            if (ImGui::MenuItem("Create Sphere")) {}
-            if (ImGui::MenuItem("Create Pyramid")) {}
-
-            ImGui::EndMenu();
-        }
-
-        ImGui::EndMainMenuBar();
-    }
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    // Dibuja la grilla
     DrawGrid();
 
     ImGui::Render();
@@ -174,21 +162,4 @@ update_status ModuleWindow::Update(float dt)
     SwapBuffers();
 
     return UPDATE_CONTINUE;
-}
-
-update_status ModuleWindow::PostUpdate(float dt) {
-    return UPDATE_CONTINUE;
-}
-
-void ModuleWindow::SetTitle(const char* title)
-{
-    if (window != nullptr)
-    {
-        SDL_SetWindowTitle(window, title);
-    }
-}
-
-void ModuleWindow::SwapBuffers()
-{
-    SDL_GL_SwapWindow(window);
 }

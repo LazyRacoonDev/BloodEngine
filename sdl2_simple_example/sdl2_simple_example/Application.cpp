@@ -11,7 +11,7 @@ Application::Application()
 
     // Inicialización de módulos
     window = new ModuleWindow(this);
-    inputs = new ModuleInputs(this); // Añadimos el módulo de inputs
+    inputs = new ModuleInputs(this);
 
     // Agregamos los módulos a la lista de la aplicación
     AddModule(window);
