@@ -1,4 +1,5 @@
 # Blood Engine
+![image](https://github.com/user-attachments/assets/b3b39651-1a82-4b78-af65-437036d1d5fc)
 
 Blood is a 3D game engine made by three students from CITM-UPC Terrassa.
 
@@ -12,12 +13,10 @@ Made by: Hugo Castaño, Sergio Corona and Bernat Cifuentes
 Our GitHub project: [Blood Engine](https://github.com/LazyRacoonDev/BloodEngine)
 
 ## Description
-Our first submission includes a geometry viewer for the game engine being developed in the course. The viewer supports loading FBX models and also features orbital camera controls.
+Our first submission includes a grid and features orbital camera controls.
 ### Key Features Included
-* Automatic loading of the Baker_house model (FBX) on startup.
+* Rendered grid for editor
 * Camera controls for navigating the scene.
 
 ## Controls
-
-### Camera
-- 
+ WASD for movement
