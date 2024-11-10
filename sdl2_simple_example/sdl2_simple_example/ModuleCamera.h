@@ -1,39 +1,27 @@
-#pragma once
-#include "Module.h"
-#include "Globals.h"
-#include <SDL2/SDL.h>
-#include <glm/glm.hpp>  // Usaremos GLM para operaciones matemáticas de cámara
+#ifndef __ModuleCamera_H__
+#define __ModuleCamera_H__
 
-class ModuleCamera : public Module
-{
+#include "Module.h"
+#include "SDL2/SDL.h"
+
+class Application;
+
+bool processEvents();
+
+class ModuleCamera : public Module {
 public:
     ModuleCamera(Application* app, bool start_enabled = true);
     ~ModuleCamera();
 
     bool Init() override;
+    bool Start() override;
+    update_status PreUpdate(float dt) override;
     update_status Update(float dt) override;
+    update_status PostUpdate(float dt) override;
     bool CleanUp() override;
 
-    void SetPosition(const glm::vec3& pos);
-    void LookAt(const glm::vec3& target);
-
-    void Move(const glm::vec3& direction);
-    void Rotate(float pitch, float yaw);
-
-    glm::mat4 GetViewMatrix() const;
-
-private:
-    glm::vec3 position;
-    glm::vec3 front;
-    glm::vec3 up;
-    glm::vec3 right;
-    glm::vec3 world_up;
-
-    float yaw;
-    float pitch;
-    float movement_speed;
-    float mouse_sensitivity;
-    float zoom;
-
-    void UpdateCameraVectors();
+    void MoveCamera();
+    void Control();
+    void UpdateCamera();
 };
+#endif
