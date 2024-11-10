@@ -1,4 +1,4 @@
-ï»¿#ifndef __ModuleWindow_H__
+#ifndef __ModuleWindow_H__
 #define __ModuleWindow_H__
 
 #include "Module.h"
@@ -22,14 +22,14 @@ public:
 
     void SetTitle(const char* title);
     void SwapBuffers();
-    void SetCameraView();  // Nueva funciï¿½n para configurar la cï¿½mara
+    void SetCameraView();  // Nueva función para configurar la cámara
 
 private:
     void DrawGrid();
     SDL_Window* window;
     SDL_Surface* screenSurface;
     SDL_GLContext context;
-    glm::mat4 viewMatrix;   // Matriz de vista para la cï¿½mara
+    glm::mat4 viewMatrix;   // Matriz de vista para la cámara
     int Height;
     int Width;
 };
