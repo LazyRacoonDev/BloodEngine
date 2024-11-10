@@ -181,7 +181,6 @@ update_status ModuleWindow::Update(float dt)
             ImGui::EndMenu();
         }
 
-        // New "Objects" menu at the top level
         if (ImGui::BeginMenu("Objects")) 
         {
 

@@ -1,32 +1,15 @@
-#ifndef __MODULERENDERER_H__
-#define __MODULERENDERER_H__
+#ifndef __ModuleRenderer_H__
+#define __ModuleRenderer_H__
 
 #include "Module.h"
-#include <assimp/scene.h>
 #include <assimp/Importer.hpp>
+#include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <vector>
-#include <GL/glew.h>
-#include <iostream>
+#include <string>
+#include <glm/glm.hpp>
 
-#define VERTEX_ATTRIBUTES 3
-
-struct Mesh {
-    uint id_vertex = 0;
-    uint vertexCount = 0;
-    float* vertex = nullptr;
-
-    uint id_index = 0;
-    uint indexCount = 0;
-    uint* index = nullptr;
-
-    uint VBO = 0; // Vertex Buffer Object
-    uint EBO = 0; // Element Buffer Object
-
-    Mesh();
-    ~Mesh();
-    void Render();
-};
+class Application;
 
 class ModuleRenderer : public Module {
 public:
@@ -40,11 +23,29 @@ public:
     update_status PostUpdate(float dt) override;
     bool CleanUp() override;
 
-private:
-    std::vector<Mesh*> meshList;
-    const char* model_path = "sdl2_simple_example\sdl2_simple_example\Assets\BakerHouse.fbx";
+    bool LoadModel(const char* path);
 
-    bool LoadModel(const char* file_path);
-    void ImportMesh(aiMesh* aiMesh);
+private:
+    struct Vertex {
+        glm::vec3 Position;
+        glm::vec3 Normal;
+        glm::vec2 TexCoords;
+    };
+
+    struct Mesh {
+        std::vector<Vertex> vertices;
+        std::vector<unsigned int> indices;
+        unsigned int VAO, VBO, EBO;
+
+        void SetupMesh();
+        void Draw();
+    };
+
+    std::vector<Mesh> meshes;
+    std::string directory;
+
+    void ProcessNode(aiNode* node, const aiScene* scene);
+    Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
 };
+
 #endif

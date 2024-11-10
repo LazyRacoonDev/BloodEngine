@@ -28,7 +28,6 @@ bool ModuleInputs::Init()
 
 update_status ModuleInputs::PreUpdate(float dt)
 {
-    // Reset mouse motion
     mousexmotion = 0;
     mouseymotion = 0;
 

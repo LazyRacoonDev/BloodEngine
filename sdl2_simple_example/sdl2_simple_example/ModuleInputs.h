@@ -3,7 +3,7 @@
 #include "Globals.h"
 #include <SDL2/SDL.h>
 
-#define MAX_KEYS 200  // Define a constant for the maximum keys
+#define MAX_KEYS 200  
 #define MAX_BUTTONS 5
 
 bool processevents();
