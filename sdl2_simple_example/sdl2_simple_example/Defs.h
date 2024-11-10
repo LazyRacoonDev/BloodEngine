@@ -11,6 +11,15 @@
 #include "MyWindow.h"
 #include "IL/il.h"
 #include "Windows.h"
+#include <vector>
+#include <stdio.h>
+//ASSIMP
+using namespace std;
 
+typedef unsigned int uint;
+#include <assimp/cimport.h>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <iostream>
 
 #endif // !__DEFS_H__
