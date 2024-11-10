@@ -22,7 +22,7 @@ bool ModuleInputs::Start()
 
 bool ModuleInputs::Init()
 {
-    SDL_InitSubSystem(SDL_INIT_EVENTS); // Inicializa solo el subsistema de eventos
+    SDL_InitSubSystem(SDL_INIT_EVENTS); 
     return true;
 }
 
@@ -35,12 +35,11 @@ update_status ModuleInputs::PreUpdate(float dt)
     SDL_Event event;
     while (SDL_PollEvent(&event))
     {
-        ImGui_ImplSDL2_ProcessEvent(&event); // Pasa los eventos a ImGui
+        ImGui_ImplSDL2_ProcessEvent(&event); 
 
         switch (event.type)
         {
         case SDL_QUIT:
-            // Indica a la aplicaci�n que debe detenerse
             return UPDATE_STOP;
 
         case SDL_KEYDOWN:
@@ -82,7 +81,7 @@ update_status ModuleInputs::PreUpdate(float dt)
         }
     }
 
-    // Actualizaci�n de estados del teclado
+    // estados de teclado
     for (int i = 0; i < MAX_KEYS; ++i)
     {
         if (keyboard[i] == KEY_DOWN)
@@ -91,7 +90,7 @@ update_status ModuleInputs::PreUpdate(float dt)
             keyboard[i] = KEY_IDLE;
     }
 
-    // Actualizaci�n de estados de botones del rat�n
+    // estados botones del rat�n
     for (int i = 0; i < MAX_BUTTONS; ++i)
     {
         if (mbutton[i] == KEY_DOWN)
@@ -115,6 +114,6 @@ update_status ModuleInputs::PostUpdate(float dt)
 
 bool ModuleInputs::CleanUp()
 {
-    SDL_QuitSubSystem(SDL_INIT_EVENTS); // Solo cierra el subsistema de eventos
+    SDL_QuitSubSystem(SDL_INIT_EVENTS); 
     return true;
 }

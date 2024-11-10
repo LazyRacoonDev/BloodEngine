@@ -1,13 +1,13 @@
 #include "ModuleCamera.h"
 #include "Application.h"
 #include "Globals.h"
-#include "ModuleInputs.h" 
 #include <glm/gtc/matrix_transform.hpp>
+#include "ModuleWindow.h"
 
 ModuleCamera::ModuleCamera(Application* app, bool start_enabled) : Module(app, start_enabled) {
-    position = glm::vec3(10.0f, 10.0f, 10.0f);
-    target = glm::vec3(0.0f, 0.0f, 0.0f);     
-    up = glm::vec3(0.0f, 1.0f, 0.0f);         
+    position = glm::vec3(10.0f, 10.0f, 10.0f); 
+    target = glm::vec3(0.0f, 0.0f, 0.0f);    
+    up = glm::vec3(0.0f, 1.0f, 0.0f);        
     speed = 20.0f;                            
 }
 
@@ -17,6 +17,7 @@ ModuleCamera::~ModuleCamera() {
 
 bool ModuleCamera::Init() {
     return true;
+    
 }
 
 bool ModuleCamera::Start() {
@@ -28,8 +29,16 @@ update_status ModuleCamera::PreUpdate(float dt) {
 }
 
 update_status ModuleCamera::Update(float dt) {
-    CameraInput(dt);       
-    updateViewMatrix();    
+    CameraInput(dt);      
+    updateViewMatrix();
+    glLoadIdentity();
+
+    gluPerspective(45.0f, (GLfloat)App->window->Width / (GLfloat)App->window->Height, 0.1f, 100.0f);
+
+    gluLookAt(15.0f, 25.0f, -25.0f,
+        0.0f, 0.0f, 0.0f,
+        0.0f, 1.0f, 0.0f);
+
     return UPDATE_CONTINUE;
 }
 
@@ -38,26 +47,31 @@ update_status ModuleCamera::PostUpdate(float dt) {
 }
 
 void ModuleCamera::CameraInput(float dt) {
-    ModuleInputs* inputs;
+    const Uint8* keys = SDL_GetKeyboardState(NULL); 
 
     // Movimiento hacia adelante y atrás
-    if (inputs->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+    if (keys[SDL_SCANCODE_W]) {
         position += glm::normalize(target - position) * speed * dt;
+        SDL_Log("se pulsa w");
     }
-    if (inputs->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
+    if (keys[SDL_SCANCODE_S]) {
         position -= glm::normalize(target - position) * speed * dt;
-    }
-    // Movimiento hacia los lados
-    glm::vec3 right = glm::normalize(glm::cross(target - position, up));
-    if (inputs->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
-        position -= right * speed * dt;
-    }
-    if (inputs->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
-        position += right * speed * dt;
+        SDL_Log("se pulsa s");
     }
 
-    int mouseMotionX = inputs->GetMouseXMotion();
-    int mouseMotionY = inputs->GetMouseYMotion();
+    // Movimiento hacia los lados
+    glm::vec3 right = glm::normalize(glm::cross(target - position, up));
+    if (keys[SDL_SCANCODE_A]) {
+        position -= right * speed * dt;
+        SDL_Log("se pulsa a");
+    }
+    if (keys[SDL_SCANCODE_D]) {
+        position += right * speed * dt;
+        SDL_Log("se pulsa d");
+    }
+
+    int mouseMotionX, mouseMotionY;
+    SDL_GetRelativeMouseState(&mouseMotionX, &mouseMotionY); 
 
     float sensitivity = 0.1f;
 
@@ -71,7 +85,6 @@ void ModuleCamera::CameraInput(float dt) {
 }
 
 void ModuleCamera::updateViewMatrix() {
-    // matriz de vista
     viewMatrix = glm::lookAt(position, target, up);
 }
 
