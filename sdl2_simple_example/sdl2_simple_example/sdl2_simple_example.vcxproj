@@ -130,9 +130,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Module.cpp" />
-    <ClCompile Include="ModuleConsole.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="ModuleConsole.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -141,9 +139,7 @@
     <ClInclude Include="Defs.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleConsole.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="ModuleConsole.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
