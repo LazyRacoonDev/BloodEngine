@@ -2,7 +2,9 @@
 
 #include "Module.h"
 #include "ModuleWindow.h"
+#include "ModuleInputs.h"
 //#include "ModuleConsole.h"
+#include "ModuleCamera.h"
 
 
 
@@ -13,8 +15,12 @@ Application::Application()
 	External = this;
 
 	window = new ModuleWindow(this);
+	inputs = new ModuleInputs(this);
+	camera = new ModuleCamera(this);
 	//console = new ModuleConsole(this);
 	AddModule(window);
+	AddModule(inputs);
+	AddModule(camera);
 	//AddModule(console);
 }
 

@@ -4,7 +4,7 @@
 #include "imgui.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
-
+#include "ModuleCamera.h"
 ModuleWindow::ModuleWindow(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
     window = nullptr;
@@ -216,7 +216,7 @@ update_status ModuleWindow::Update(float dt)
 
     gluPerspective(45.0f, (GLfloat)Width / (GLfloat)Height, 0.1f, 100.0f);
 
-    gluLookAt(25.0f, 25.0f, -25.0f, 
+    gluLookAt(15.0f, 25.0f, -25.0f, 
         0.0f, 0.0f, 0.0f,      
         0.0f, 1.0f, 0.0f);     
 

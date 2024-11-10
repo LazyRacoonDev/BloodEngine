@@ -6,12 +6,17 @@
 class Module;
 class ModuleWindow;
 class ModuleConsole;
+class ModuleInputs;
+class ModuleCamera;
 
 class Application
 {
 public:
 	ModuleWindow* window;
 	ModuleConsole* console;
+	ModuleInputs* inputs;
+	ModuleCamera* camera;
+
 private:
 	Timer ms_timer;
 	float dt;
