@@ -20,3 +20,7 @@ Our first submission includes a grid and features orbital camera controls.
 
 ## Controls
  WASD for movement
+
+##TODO
+* Model Loader
+* Info Panels
