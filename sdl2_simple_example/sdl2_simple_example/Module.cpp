@@ -2,10 +2,12 @@
 
 Module::Module(Application* parent, bool start_enabled) : App(parent)
 {
+
 }
 
 Module::~Module()
 {
+
 }
 
 bool Module::Init()

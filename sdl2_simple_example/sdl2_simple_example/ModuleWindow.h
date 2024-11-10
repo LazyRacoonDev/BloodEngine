@@ -3,8 +3,6 @@
 
 #include "Module.h"
 #include "SDL2/SDL.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 
 class Application;
 
@@ -22,14 +20,11 @@ public:
 
     void SetTitle(const char* title);
     void SwapBuffers();
-    void SetCameraView();  // Nueva función para configurar la cámara
 
-private:
-    void DrawGrid();
+public:
     SDL_Window* window;
     SDL_Surface* screenSurface;
     SDL_GLContext context;
-    glm::mat4 viewMatrix;   // Matriz de vista para la cámara
     int Height;
     int Width;
 };
