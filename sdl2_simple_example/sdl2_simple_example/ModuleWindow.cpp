@@ -79,21 +79,6 @@ bool ModuleWindow::Init()
     return ret;
 }
 
-bool processEvents() {
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        switch (event.type) {
-        case SDL_QUIT:
-            return false;
-            break;
-        default:
-            ImGui_ImplSDL2_ProcessEvent(&event);
-            break;
-        }
-    }
-    return true;
-}
-
 bool ModuleWindow::CleanUp()
 {
     if (context != nullptr)
@@ -114,32 +99,30 @@ bool ModuleWindow::Start() {
 }
 
 update_status ModuleWindow::PreUpdate(float dt) {
-    return UPDATE_CONTINUE; 
+    return UPDATE_CONTINUE;
 }
 
-const int GRID_SIZE = 20;  
+const int GRID_SIZE = 20;
 const float LINE_SPACING = 1.0f;
 
 void DrawGrid() {
     glBegin(GL_LINES);
 
-
-    glColor3f(1.0f, 0.0f, 0.0f); 
+    glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(-GRID_SIZE * LINE_SPACING, 0.0f, 0.0f);
-    glVertex3f(GRID_SIZE * LINE_SPACING, 0.0f, 0.0f); 
+    glVertex3f(GRID_SIZE * LINE_SPACING, 0.0f, 0.0f);
 
+    glColor3f(0.0f, 0.0f, 1.0f);
+    glVertex3f(0.0f, 0.0f, -GRID_SIZE * LINE_SPACING);
+    glVertex3f(0.0f, 0.0f, GRID_SIZE * LINE_SPACING);
 
-    glColor3f(0.0f, 0.0f, 1.0f);  
-    glVertex3f(0.0f, 0.0f, -GRID_SIZE * LINE_SPACING); 
-    glVertex3f(0.0f, 0.0f, GRID_SIZE * LINE_SPACING);  
+    glColor3f(0.0f, 1.0f, 0.0f);
+    glVertex3f(0.0f, -GRID_SIZE * LINE_SPACING, 0.0f);
+    glVertex3f(0.0f, GRID_SIZE * LINE_SPACING, 0.0f);
 
-    glColor3f(0.0f, 1.0f, 0.0f);  
-    glVertex3f(0.0f, -GRID_SIZE * LINE_SPACING, 0.0f); 
-    glVertex3f(0.0f, GRID_SIZE * LINE_SPACING, 0.0f);  
-
-    glColor3f(0.5f, 0.5f, 0.5f); 
+    glColor3f(0.5f, 0.5f, 0.5f);
     for (int i = -GRID_SIZE; i <= GRID_SIZE; ++i) {
-        
+
         glVertex3f(i * LINE_SPACING, 0.0f, -GRID_SIZE * LINE_SPACING);
         glVertex3f(i * LINE_SPACING, 0.0f, GRID_SIZE * LINE_SPACING);
 
@@ -167,31 +150,14 @@ update_status ModuleWindow::Update(float dt)
             ImGui::EndMenu();
         }
 
-        // New "Objects" menu at the top level
-        if (ImGui::BeginMenu("Objects")) 
+        if (ImGui::BeginMenu("Objects"))
         {
+            if (ImGui::MenuItem("Create Plane")) {}
+            if (ImGui::MenuItem("Create Cube")) {}
+            if (ImGui::MenuItem("Create Sphere")) {}
+            if (ImGui::MenuItem("Create Pyramid")) {}
 
-            if (ImGui::MenuItem("Create Plane")) 
-            {
-
-            }
-
-            if (ImGui::MenuItem("Create Cube")) 
-            {
-
-            }
-
-            if (ImGui::MenuItem("Create Sphere")) 
-            {
-
-            }
-
-            if (ImGui::MenuItem("Create Pyramid")) 
-            {
-
-            }
-
-            ImGui::EndMenu(); 
+            ImGui::EndMenu();
         }
 
         ImGui::EndMainMenuBar();
@@ -199,14 +165,7 @@ update_status ModuleWindow::Update(float dt)
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glLoadIdentity();
-
-    gluPerspective(45.0f, (GLfloat)Width / (GLfloat)Height, 0.1f, 100.0f);
-
-    gluLookAt(25.0f, 25.0f, -25.0f, 
-        0.0f, 0.0f, 0.0f,      
-        0.0f, 1.0f, 0.0f);     
-
+    // Dibuja la grilla
     DrawGrid();
 
     ImGui::Render();
@@ -218,7 +177,7 @@ update_status ModuleWindow::Update(float dt)
 }
 
 update_status ModuleWindow::PostUpdate(float dt) {
-    return UPDATE_CONTINUE; 
+    return UPDATE_CONTINUE;
 }
 
 void ModuleWindow::SetTitle(const char* title)
