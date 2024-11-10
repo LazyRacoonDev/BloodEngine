@@ -1,4 +1,4 @@
-#include "ModuleWindow.h"
+ï»¿#include "ModuleWindow.h"
 #include "Application.h"
 #include "Globals.h"
 #include "imgui.h"
@@ -78,7 +78,7 @@ bool ModuleWindow::Init()
                 glEnable(GL_DEPTH_TEST);
                 glClearColor(0.1f, 0.1f, 0.1f, 1.0f);  // Color gris oscuro
 
-                SetCameraView();  // Configura la vista de la cámara
+                SetCameraView();  // Configura la vista de la cï¿½mara
             }
         }
     }

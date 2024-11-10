@@ -1,4 +1,4 @@
-#include "Application.h"
+ï»¿#include "Application.h"
 #include "ModuleInputs.h"
 #include "imgui_impl_sdl2.h"
 
@@ -40,7 +40,7 @@ update_status ModuleInputs::PreUpdate(float dt)
         switch (event.type)
         {
         case SDL_QUIT:
-            // Indica a la aplicación que debe detenerse
+            // Indica a la aplicaciï¿½n que debe detenerse
             return UPDATE_STOP;
 
         case SDL_KEYDOWN:
@@ -82,7 +82,7 @@ update_status ModuleInputs::PreUpdate(float dt)
         }
     }
 
-    // Actualización de estados del teclado
+    // Actualizaciï¿½n de estados del teclado
     for (int i = 0; i < MAX_KEYS; ++i)
     {
         if (keyboard[i] == KEY_DOWN)
@@ -91,7 +91,7 @@ update_status ModuleInputs::PreUpdate(float dt)
             keyboard[i] = KEY_IDLE;
     }
 
-    // Actualización de estados de botones del ratón
+    // Actualizaciï¿½n de estados de botones del ratï¿½n
     for (int i = 0; i < MAX_BUTTONS; ++i)
     {
         if (mbutton[i] == KEY_DOWN)
