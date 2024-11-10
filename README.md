@@ -12,15 +12,3 @@ Made by: Hugo Castaño, Sergio Corona and Bernat Cifuentes
 
 Our GitHub project: [Blood Engine](https://github.com/LazyRacoonDev/BloodEngine)
 
-## Description
-Our first submission includes a grid and features orbital camera controls.
-### Key Features Included
-* Rendered grid for editor
-* Camera controls for navigating the scene.
-
-## Controls
- WASD for movement
-
-##TODO
-* Model Loader
-* Info Panels
