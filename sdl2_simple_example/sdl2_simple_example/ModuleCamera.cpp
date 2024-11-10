@@ -35,7 +35,7 @@ update_status ModuleCamera::Update(float dt) {
 
     gluPerspective(45.0f, (GLfloat)App->window->Width / (GLfloat)App->window->Height, 0.1f, 100.0f);
 
-    gluLookAt(15.0f, 25.0f, -25.0f,
+    gluLookAt(target.x, target.y, target.z,
         0.0f, 0.0f, 0.0f,
         0.0f, 1.0f, 0.0f);
 
@@ -80,7 +80,7 @@ void ModuleCamera::CameraInput(float dt) {
 
     rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(-mouseMotionY * sensitivity), right);
     position = glm::vec3(rotationMatrix * glm::vec4(position - target, 1.0f)) + target;
-
+    
     target = position + glm::normalize(target - position);
 }
 

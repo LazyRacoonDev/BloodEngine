@@ -31,9 +31,9 @@ private:
 
     glm::vec3 position;        
     glm::vec3 target;          
-    glm::vec3 up;            
+    glm::vec3 up;
+    glm::vec3 front;
     glm::mat4 viewMatrix;      
     glm::mat4 projectionMatrix;
 };
-
 #endif
