@@ -20,7 +20,6 @@ Application::Application()
 	gui = new ModuleImGui(this);
 	inputs = new ModuleInputs(this);
 	camera = new ModuleCamera(this);
-	gui = new ModuleImGui(this);
 	//renderer = new ModuleRenderer(this);
 	//console = new ModuleConsole(this);
 	AddModule(window);

@@ -20,6 +20,7 @@ bool ModuleImGui::Init() {
     io->ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;   
 
     ImGui_ImplSDL2_InitForOpenGL(App->window->window, SDL_GL_GetCurrentContext); //AQUI PETA
+    SDL_GetError();
     ImGui_ImplOpenGL3_Init("#version 130");
 
     return true;
@@ -51,7 +52,7 @@ update_status ModuleImGui::PostUpdate(float dt) {
     if (io->ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
         ImGui::UpdatePlatformWindows();
         ImGui::RenderPlatformWindowsDefault();
-        SDL_GL_MakeCurrent(App->window->window, App->window->context);
+        SDL_GL_MakeCurrent(App->window->window, App->window->context);  
     }
     return UPDATE_CONTINUE;
 }
