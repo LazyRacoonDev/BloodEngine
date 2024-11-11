@@ -9,11 +9,13 @@ class ModuleWindow;
 class ModuleInputs;
 class ModuleCamera;
 //class ModuleRenderer;
+class ModuleImGui;
 
 class Application
 {
 public:
 	ModuleWindow* window;
+	ModuleImGui* gui;
 	//ModuleConsole* console;
 	ModuleInputs* inputs;
 	ModuleCamera* camera;

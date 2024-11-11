@@ -134,6 +134,7 @@
     <ClCompile Include="ModuleConsole.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="ModuleImGui.cpp" />
     <ClCompile Include="ModuleInputs.cpp" />
     <ClCompile Include="ModuleRenderer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -150,6 +151,7 @@
     <ClInclude Include="ModuleConsole.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="ModuleImgui.h" />
     <ClInclude Include="ModuleInputs.h" />
     <ClInclude Include="ModuleRenderer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
