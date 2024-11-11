@@ -5,18 +5,16 @@
 
 class Module;
 class ModuleWindow;
-//class ModuleConsole;
 class ModuleInputs;
 class ModuleCamera;
 //class ModuleRenderer;
-class ModuleImGui;
+//class ModuleImGui;
 
 class Application
 {
 public:
 	ModuleWindow* window;
-	ModuleImGui* gui;
-	//ModuleConsole* console;
+	//ModuleImGui* gui;
 	ModuleInputs* inputs;
 	ModuleCamera* camera;
 	//ModuleRenderer* renderer;

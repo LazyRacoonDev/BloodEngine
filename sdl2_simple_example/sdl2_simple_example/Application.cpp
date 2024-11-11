@@ -3,10 +3,9 @@
 #include "Module.h"
 #include "ModuleWindow.h"
 #include "ModuleInputs.h"
-//#include "ModuleConsole.h"
 #include "ModuleCamera.h"
 //#include "ModuleRenderer.h"
-#include "ModuleImGui.h"
+//#include "ModuleImGui.h"
 
 
 
@@ -17,17 +16,15 @@ Application::Application()
 	External = this;
 
 	window = new ModuleWindow(this);
-	gui = new ModuleImGui(this);
+	//gui = new ModuleImGui(this);
 	inputs = new ModuleInputs(this);
 	camera = new ModuleCamera(this);
 	//renderer = new ModuleRenderer(this);
-	//console = new ModuleConsole(this);
 	AddModule(window);
-	AddModule(gui);
+	//AddModule(gui);
 	AddModule(inputs);
 	AddModule(camera);
 	//AddModule(renderer);
-	//AddModule(console);
 }
 
 Application::~Application()

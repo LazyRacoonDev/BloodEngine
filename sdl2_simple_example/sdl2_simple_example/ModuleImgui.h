@@ -22,5 +22,4 @@ private:
     void SetupDockSpace(); 
     void RenderPanels();   
 };
-
 #endif 

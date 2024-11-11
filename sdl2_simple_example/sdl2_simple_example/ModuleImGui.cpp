@@ -13,15 +13,11 @@ ModuleImGui::~ModuleImGui() {}
 
 bool ModuleImGui::Init() {
     IMGUI_CHECKVERSION();
-    ImGui::CreateContext();
+    
     io = &ImGui::GetIO();
     io->ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; 
     io->ConfigFlags |= ImGuiConfigFlags_DockingEnable;     
     io->ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;   
-
-    ImGui_ImplSDL2_InitForOpenGL(App->window->window, SDL_GL_GetCurrentContext); //AQUI PETA
-    SDL_GetError();
-    ImGui_ImplOpenGL3_Init("#version 130");
 
     return true;
 }

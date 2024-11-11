@@ -8,7 +8,7 @@ ModuleCamera::ModuleCamera(Application* app, bool start_enabled) : Module(app, s
     position = glm::vec3(10.0f, 10.0f, 10.0f);
     front = glm::normalize(glm::vec3(0.0f, 0.0f, -1.0f));  
     up = glm::vec3(0.0f, 1.0f, 0.0f);
-    speed = 20.0f;
+    speed = 10.0f;
 }
 
 ModuleCamera::~ModuleCamera() {

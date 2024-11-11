@@ -22,8 +22,8 @@ enum update_status
 	UPDATE_ERROR
 };
 
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 1024
+#define SCREEN_WIDTH 1500
+#define SCREEN_HEIGHT 800
 #define SCREEN_SIZE 1
 #define WIN_FULLSCREEN false
 #define WIN_RESIZABLE true
