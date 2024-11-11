@@ -20,6 +20,8 @@ bool ModuleCamera::Init() {
 }
 
 bool ModuleCamera::Start() {
+    SDL_ShowCursor(SDL_DISABLE); 
+    SDL_SetRelativeMouseMode(SDL_TRUE);  
     return true;
 }
 
@@ -73,7 +75,7 @@ void ModuleCamera::CameraInput(float dt) {
     SDL_GetRelativeMouseState(&mouseMotionX, &mouseMotionY);
 
     float sensitivity = 0.1f;
-    float yaw = mouseMotionX * sensitivity;
+    float yaw = -mouseMotionX * sensitivity;
     float pitch = mouseMotionY * sensitivity;
 
     glm::mat4 yawRotation = glm::rotate(glm::mat4(1.0f), glm::radians(yaw), up);
@@ -89,5 +91,7 @@ void ModuleCamera::updateViewMatrix() {
 }
 
 bool ModuleCamera::CleanUp() {
+    SDL_ShowCursor(SDL_ENABLE); 
+    SDL_SetRelativeMouseMode(SDL_FALSE);  
     return true;
 }
